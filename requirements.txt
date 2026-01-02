@@ -1,0 +1,15 @@
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+sentence-transformers
+faiss-cpu
+chromadb
+langchain
+fastapi
+uvicorn
+streamlit
+jupyterlab
+ipykernel
+python-dotenv
