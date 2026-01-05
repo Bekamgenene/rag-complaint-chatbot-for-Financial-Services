@@ -1,4 +1,4 @@
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter  # CHANGED
 from sentence_transformers import SentenceTransformer
 import faiss
 import pandas as pd

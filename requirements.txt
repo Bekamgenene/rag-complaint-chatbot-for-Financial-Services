@@ -17,3 +17,4 @@ dotenv
 google-generativeai
 tabulate
 streamlit
+langchain-text-splitters
