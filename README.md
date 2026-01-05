@@ -1,91 +1,109 @@
-# Intelligent Complaint Analysis for Financial Services
+# 🧠 Intelligent Complaint Analysis for Financial Services
 
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+This project builds a Retrieval-Augmented Generation (RAG) chatbot for CrediTrust Financial to help internal teams quickly analyze and act upon customer complaints using real narratives. Users can ask natural questions and get grounded, AI-powered answers.
 
-A comprehensive analysis system for processing and analyzing financial service complaints using natural language processing and machine learning techniques.
+---
 
-## Project Overview
+## 💼 Business Context
 
-This project aims to analyze consumer complaints in the financial services sector, providing insights through data exploration, text preprocessing, and advanced analytics. The system processes complaint data, performs exploratory data analysis, and prepares the data for further machine learning tasks.
+CrediTrust Financial is a fast-growing fintech company in East Africa offering:
 
-## Features
+- 💳 Credit Cards
+- 🧾 Personal Loans
+- 🛒 Buy Now, Pay Later (BNPL)
+- 🏦 Savings Accounts
+- 💸 Money Transfers
 
-- **Data Loading & Preprocessing**: Efficient loading and cleaning of complaint data
-- **Exploratory Data Analysis**: Comprehensive analysis of complaint patterns and trends
-- **Text Processing**: Advanced text cleaning and normalization
-- **Modular Architecture**: Well-organized codebase with separate modules for different tasks
-- **Reproducible Analysis**: Jupyter notebooks for interactive analysis and visualization
+Thousands of complaints are submitted monthly. Currently, product and support teams manually review these complaints — a time-consuming process. This project uses AI to automate insights and enable proactive issue resolution.
 
-## Installation
+---
 
-1. Clone the repository:
+## 🚀 Key Features
 
-   ```bash
-   git clone https://github.com/Bekamgenene/rag-complaint-chatbot-for-Financial-Services.git
-   cd Intelligent-Complaint-Analysis-for-Financial-Services
-   ```
+- 🔍 Semantic search over real complaint narratives
+- 🤖 LLM-based question answering with source grounding
+- 🧱 Modular architecture (EDA → Chunking → Embedding → Retrieval → Generation → Evaluation)
+- 💬 Interactive chatbot interface for non-technical users
 
-2. Create and activate a virtual environment (recommended):
+---
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-   ```
-
-3. Install the required packages:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-.
-├── data/                   # Raw and processed data
-├── notebooks/              # Jupyter notebooks for analysis
-├── reports/                # Generated analysis reports and visualizations
-├── src/                    # Source code
-│   ├── notebook/           # Additional notebook resources
-│   └── task1_eda_preprocess.py  # Main data processing script
-├── utils/                  # Utility functions
-├── .gitignore              # Git ignore file
-├── LICENSE                 # MIT License
-└── requirements.txt        # Project dependencies
+project-root/
+├── README 👈 Project overview
+├── requirements.txt 📦 Python dependencies
+├── .env                         # Environment variables (e.g., GEMINI_API_KEY)
+├── data/
+│   ├── raw/
+│   │   └── complaints.csv 🗃️ Raw CFPB complaint data
+│   └── processed/
+│       └── processed_complaints.csv ✅ Cleaned and filtered complaints
+├── notebooks/
+│   ├── 1.0-eda.ipynb 📊 EDA and data cleaning
+│   └── 2.0-evaluation.ipynb 📄 RAG pipeline evaluation and reporting
+├── report/ 📄 Evaluation, screenshots, final report
+├── src/
+│   ├── __init__.py
+│   ├── config.py ⚙️ Config and paths
+│   ├── data_processing.py 🧹 Text filtering and preprocessing
+│   ├── embedding_pipeline.py 🧠 Embedding and FAISS vector indexing
+│   ├── retriever.py            # Embedding + retrieval logic (FAISS + SentenceTransformers)
+│   ├── prompt_template.py      # Prompt engineering templates
+│   ├── generator.py            # LLM integration (Gemini API)
+│   ├── rag_pipeline.py         # Combines retriever + generator into RAG pipeline
+│   └── evaluation.py           # Evaluation logic for batch question answering
+├── tests/
+│   ├── __init__.py
+│   ├── test_dummy.py
+│   └── test_embedding_pipeline.py 🧪 Unit tests (Pytest)
 ```
 
-## Usage
+---
 
-1. Place your complaint data in the `data/raw/` directory as `complaints.csv`
-2. Run the EDA and preprocessing script:
-   ```bash
-   python src/task1_eda_preprocess.py
-   ```
-3. Explore the generated reports in the `reports/` directory
+## ⚙️ Setup Instructions
 
-## Dependencies
+- 🧬 Create and activate a virtual environment
+- 📥 Install dependencies: `pip install -r requirements.txt`
+- 🗂️ Add the `complaints.csv` dataset to `data/raw/`
+- 📊 Run the EDA notebook to clean and filter the data
+- 🧠 Run `embedding_pipeline.py` to generate and store embeddings
+- 🔑 Create a `.env` file in the project root with your Gemini API key, e.g.:
 
-- pandas
-- numpy
-- matplotlib
-- seaborn
-- scikit-learn
-- sentence-transformers
-- faiss-cpu
-- chromadb
-- langchain
-- fastapi
+  ```
+  GEMINI_API_KEY=your_actual_api_key_here
+  ```
 
-## Contributing
+- 💬 Start building the chatbot interface (Gradio/Streamlit) or run evaluation with `notebooks/2.0-evaluation.ipynb`
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+---
 
-## License
+## 🛠️ Workflow Status
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+- ✅ Task 1: EDA and preprocessing
+- ✅ Task 2: Narrative chunking and embedding using FAISS
+- ⬜ Task 3: Retrieval + LLM integration with prompt engineering
+- ⬜ Task 4: Chatbot UI with source-verified answers
 
-## Acknowledgments
+---
 
-- CFPB Consumer Complaint Database
-- Open-source community for the amazing libraries used in this project
-  Building a RAG-Powered Chatbot to Turn Customer Feedback into Actionable Insights
+## 📦 Dependencies
+
+- pandas, numpy, matplotlib, seaborn
+- sentence-transformers, faiss-cpu, langchain
+- transformers, openai (optional), gradio or streamlit
+- google-generativeai (Gemini API client)
+- python-dotenv for environment variable loading
+- pytest for testing
+
+---
+
+## 🧪 Testing
+
+Run pytest to execute all unit tests:
+
+```
+pytest tests/
+```
+
+Covers chunking logic, embedding correctness, FAISS index creation, and evaluation.
