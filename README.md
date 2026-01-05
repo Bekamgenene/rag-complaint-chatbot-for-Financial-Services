@@ -75,6 +75,23 @@ project-root/
   ```
 
 - 💬 Start building the chatbot interface (Gradio/Streamlit) or run evaluation with `notebooks/2.0-evaluation.ipynb`
+- * 🖥️ To launch the interactive chatbot interface, run:
+
+  ```
+  streamlit run app.py
+  ```
+
+  This interface allows users to:
+
+  * Type or select example questions
+  * Receive streamed AI-generated answers
+  * View source excerpts used by the model
+  * Maintain conversation history during the session
+  * Clear conversation with a button
+
+  ![alt text](screenshot/image.png)
+  ### Example interface
+
 
 ---
 
